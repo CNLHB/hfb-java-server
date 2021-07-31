@@ -1,0 +1,121 @@
+server:
+  port: 8081 # 端口
+  tomcat:
+    uri-encoding: UTF-8
+  servlet:
+    context-path: /api
+spring:
+  mail:
+    # 邮件服务地址
+    host: smtp.qq.com
+    # 端口,可不写默认
+    # 编码格式
+    default-encoding: utf-8
+    # 用户名
+    username: xxx #mlwpjjrpdeewgfeg
+    # 授权码，就是我们刚才准备工作获取的代码
+    password: xxx
+    # 其它参数
+    properties:
+      mail:
+        smtp:
+          # 如果是用 SSL 方式，需要配置如下属性,使用qq邮箱的话需要开启
+          ssl:
+            enable: true
+            required: true
+          # 邮件接收时间的限制，单位毫秒
+          timeout: 10000
+          # 连接时间的限制，单位毫秒
+          connectiontimeout: 10000
+          # 邮件发送时间的限制，单位毫秒
+          writetimeout: 10000
+  redis:
+    host: 127.0.0.1 #redis无密码配置，建议设密码
+  messages:
+    encoding: UTF-8
+  datasource:
+    druid:
+      connection-init-sqls: set names utf8mb4;
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/ssk?useUnicode=true&characterEncoding=utf-8
+# 数据库连接地址
+    username: xx
+    password: xxx
+    primary:
+      connection-timeout: 30000
+    hikari:
+      read-only: false
+      connection-timeout: 60000
+      idle-timeout: 60000
+      validation-timeout: 3000
+      max-lifetime: 60000
+      login-timeout: 5
+      maximum-pool-size: 60
+      minimum-idle: 10
+#mybatis:
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+hfb:
+  # 参考腾讯云短信配置
+  sms:
+    SecretId: xxx
+    SecretKey: xxx
+    sign: 数据api
+    appid: 1400351431
+
+  jwt:
+    pubKeyPath: public.pub
+    privateKeyPath: private.pri
+#    pubKeyPath: public.pub
+#    pubKeyPathLinux: public.pub
+    pubKeyPathLinux: public.pub
+    privateKeyPathLinux: private.pri
+    # token校验白名单
+    path:
+    - /topic/page
+    - /topic/detail
+    - /topic/title
+    - /auth/verify
+    - /category
+    - /user/login
+    - /user/register
+    - /comment
+    - /msg
+    - /user/list
+    - /user/share
+    - /user/forget
+    - /upload
+    - /monitor
+    - /user/verify
+#    - /user/access
+#    - /user/willinfo
+#    - /topic/list
+    - /user/auth
+    - /login
+  upload:
+    #七牛云base地址
+    baseUrl: "http://"
+    # 上传文件格式校验白名单
+    allowTypes:
+    - image/jpeg
+    - image/jpg
+    - image/png
+    - image/bmp
+    allowFileTypes:
+    - video/mp4
+    - video/avi
+    - audio/mp3
+    - video/mpg
+    - video/webm
+    qiniu:
+    - image/jpeg
+    - image/jpg
+    - image/png
+    - image/bmp
+    - video/mp4
+    - video/avi
+    - audio/mp3
+    - video/mpg
+    - video/webm
+
